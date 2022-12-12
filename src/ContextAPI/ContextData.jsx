@@ -13,6 +13,9 @@ const initialState = {
   isError: false,
   products: [],
   featuredProducts: [],
+  isSingleLoading :false,
+  singleProduct:{},
+  isSingleError:false,
 };
 
 const ContextData = ({ children }) => {
@@ -29,11 +32,23 @@ const ContextData = ({ children }) => {
     }
   };
 
+  const getSingleProductData = async (url) => {
+    dispatch({ type: "SET__SINGLE_LOADING" });
+    try {
+      const mydata = await axios.get(url);
+      const singleProduct = await mydata.data;
+      //console.log(singleProduct);
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
+    } catch (error) {
+      dispatch({type:"SET_SINGLE_ERROR"}); 
+    }
+  };
+
   useEffect(() => {
     getProductsData(API_URL);
   }, []);
   return (
-    <MyContext.Provider value={{ ...state }}>{children}</MyContext.Provider>
+    <MyContext.Provider value={{ ...state, getSingleProductData }}>{children}</MyContext.Provider>
   );
 };
 const useProductContext = ()=>{
