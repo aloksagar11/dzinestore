@@ -18,7 +18,7 @@ const Wrapper = styled.section`
     align-items: center;
     font-size: 1.6rem;
     padding-left: 3.2rem;
-    background-color: ${({theme})=>theme.colors.bg};
+    /* background-color: ${({theme})=>theme.colors.bg}; */
     @media (max-width: ${({ theme }) => theme.media.mobile}) {
         display: none ;
         
