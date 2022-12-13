@@ -4,6 +4,7 @@ import Trusted from "../Componants/Trusted";
 import Services from "../Componants/Services";
 import FeaturedSection from "../Componants/FeaturedSection";
 const Home = () => {
+  document.title ="Dzine Store";
   return (
     <>
       <HeroSection name="Dzine Store" />;

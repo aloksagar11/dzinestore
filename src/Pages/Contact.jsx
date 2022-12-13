@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Button } from "../Styles/Button";
 
 const Contact = () => {
+  document.title ="Contact";
   return <Wrapper>
     <div className="container text-center">
       <p className="feel">

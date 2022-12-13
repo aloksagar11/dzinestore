@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const ErrorPage = () => {
+  document.title ="Error 404";
   return (
     <Wrapper>
       <div className="container">

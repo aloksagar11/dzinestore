@@ -3,6 +3,7 @@ import Product from "../Componants/Product";
 import { useProductContext } from "../ContextAPI/ContextData";
 
 const Products = () => {
+  document.title ="Products";
   const { isLoading, products } = useProductContext();
   if (isLoading) {
     return (
