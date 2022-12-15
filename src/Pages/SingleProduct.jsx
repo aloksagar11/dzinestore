@@ -4,13 +4,17 @@ import { useProductContext } from "../ContextAPI/ContextData";
 import PageNavigation from "../Componants/PageNavigation";
 import styled from "styled-components";
 const API_URL = "https://api.pujakaitem.com/api/products";
-import Images from "../Componants/Images";
+import MyImages from "../Componants/MyImages";
 import FormatPrice from "../Helpers/FormatPrice";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
-import { MdAdd, MdAddCircleOutline, MdDelete, MdOutlineSecurity } from "react-icons/md";
-import {Button} from '../Styles/Button'
+import {
+  MdAdd,
+  MdAddCircleOutline,
+  MdDelete,
+  MdOutlineSecurity,
+} from "react-icons/md";
+import { Button } from "../Styles/Button";
 import { NavLink } from "react-router-dom";
-
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -45,12 +49,14 @@ const SingleProduct = () => {
         <div className="grid grid-two-column">
           {/* Product images */}
           <div className="product-images">
-            <Images imgs={image} />
+            <MyImages imgs={image} />
           </div>
           {/* Product details */}
           <div className="product-details">
             <p className="product-name"> {name}</p>
-            <p>{stars} Stars ({reviews} reviews)</p>
+            <p>
+              {stars} Stars ({reviews} reviews)
+            </p>
             <p>
               MRP :{" "}
               <span>
@@ -87,14 +93,25 @@ const SingleProduct = () => {
               Available :{" "}
               <span>{stock > 0 ? "In Stock" : "Not  Available"}</span>
             </p>
-            <p> ID : <span>{id}</span></p>
-            <p> Brand : <span>{company}</span></p>
+            <p>
+              {" "}
+              ID : <span>{id}</span>
+            </p>
+            <p>
+              {" "}
+              Brand : <span>{company}</span>
+            </p>
             <hr />
-            <p>Colors : <span></span></p>
-            <p><MdDelete />{0}<MdAdd className="cart-add"/> </p>
-            <NavLink to ="/cart">
-
-            <Button>Add To Cart</Button>
+            <p>
+              Colors : <span></span>
+            </p>
+            <p>
+              <MdDelete />
+              {0}
+              <MdAdd className="cart-add" />{" "}
+            </p>
+            <NavLink to="/cart">
+              <Button>Add To Cart</Button>
             </NavLink>
           </div>
         </div>
@@ -106,9 +123,10 @@ const SingleProduct = () => {
 export default SingleProduct;
 
 const Wrapper = styled.section`
+  transition: all 0.2s linear;
   .container {
     width: 100%;
-    padding-bottom: 4rem ;
+    padding-bottom: 4rem;
     .product-images {
     }
     .product-details {
@@ -132,8 +150,8 @@ const Wrapper = styled.section`
         border-bottom: 1px solid #a70303;
         margin-bottom: 1rem;
         justify-content: space-around;
-        .cart-add{
-          font-size:2rem;
+        .cart-add {
+          font-size: 2rem;
         }
         .warranty-data {
           text-align: center;
