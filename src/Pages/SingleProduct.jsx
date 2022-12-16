@@ -7,6 +7,9 @@ const API_URL = "https://api.pujakaitem.com/api/products";
 import MyImages from "../Componants/MyImages";
 import FormatPrice from "../Helpers/FormatPrice";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import Stars from "../Helpers/Stars";
+import AddToCart from "../Componants/AddToCart";
+
 import {
   MdAdd,
   MdAddCircleOutline,
@@ -55,7 +58,8 @@ const SingleProduct = () => {
           <div className="product-details">
             <p className="product-name"> {name}</p>
             <p>
-              {stars} Stars ({reviews} reviews)
+              <Stars star ={stars} reviews = {reviews}/>
+              {/* {stars} Stars ({reviews} reviews) */}
             </p>
             <p>
               MRP :{" "}
@@ -102,17 +106,7 @@ const SingleProduct = () => {
               Brand : <span>{company}</span>
             </p>
             <hr />
-            <p>
-              Colors : <span></span>
-            </p>
-            <p>
-              <MdDelete />
-              {0}
-              <MdAdd className="cart-add" />{" "}
-            </p>
-            <NavLink to="/cart">
-              <Button>Add To Cart</Button>
-            </NavLink>
+            {stock>0 && <AddToCart products = {singleProduct}/> }
           </div>
         </div>
       </div>
