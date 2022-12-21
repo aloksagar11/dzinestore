@@ -13,9 +13,9 @@ const initialState = {
   isError: false,
   products: [],
   featuredProducts: [],
-  isSingleLoading :false,
-  singleProduct:{},
-  isSingleError:false,
+  isSingleLoading: false,
+  singleProduct: {},
+  isSingleError: false,
 };
 
 const ContextData = ({ children }) => {
@@ -28,7 +28,7 @@ const ContextData = ({ children }) => {
       console.log(products);
       dispatch({ type: "SET_API_DATA", payload: products });
     } catch (error) {
-      dispatch({type:"API_ERROR"}); 
+      dispatch({ type: "API_ERROR" });
     }
   };
 
@@ -40,7 +40,7 @@ const ContextData = ({ children }) => {
       //console.log(singleProduct);
       dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
     } catch (error) {
-      dispatch({type:"SET_SINGLE_ERROR"}); 
+      dispatch({ type: "SET_SINGLE_ERROR" });
     }
   };
 
@@ -48,11 +48,13 @@ const ContextData = ({ children }) => {
     getProductsData(API_URL);
   }, []);
   return (
-    <MyContext.Provider value={{ ...state, getSingleProductData }}>{children}</MyContext.Provider>
+    <MyContext.Provider value={{ ...state, getSingleProductData }}>
+      {children}
+    </MyContext.Provider>
   );
 };
-const useProductContext = ()=>{
+const useProductContext = () => {
   return useContext(MyContext);
-}
+};
 
-export { ContextData,useProductContext };
+export { ContextData, useProductContext };

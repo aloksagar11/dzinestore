@@ -3,10 +3,20 @@ import { useState } from "react";
 import styled from "styled-components";
 import { FiCheck } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
+import CartAmountTogglar from "./CartAmountTogglar";
+import {Button} from '../Styles/Button'
 
 const AddToCart = ({ products }) => {
   const { id, stock, colors } = products;
+  const [amount, setAmount] = useState(1);
   const [color, setColor] = useState(colors[0]);
+
+  const setdecrease = ()=>{
+    amount>1?setAmount(amount-1) : setAmount(1);
+  }
+  const setincrease = ()=>{
+    stock>amount?setAmount(amount+1)  : setAmount(stock);
+  }
   return (
     <Wrapper>
       <div className="colors">
@@ -18,7 +28,9 @@ const AddToCart = ({ products }) => {
                 key={index}
                 className={ele === color ? "btnStyle active" : "btnStyle"}
                 style={{ backgroundColor: ele }}
-                onClick={()=>{setColor(ele)}}
+                onClick={() => {
+                  setColor(ele);
+                }}
               >
                 {ele === color ? <FiCheck className="checkicon" /> : null}
               </button>
@@ -26,8 +38,16 @@ const AddToCart = ({ products }) => {
           })}
         </p>
       </div>
-      <div className="cart-btn">
-        <NavLink to=''></NavLink>
+
+      <CartAmountTogglar
+        amount={amount}
+        setDecrease={setdecrease}
+        setIncrease={setincrease}
+      />
+      <div className="cart-btn mx-3">
+        <NavLink to="/cart">
+          <Button>Add To Cart</Button>
+        </NavLink>
       </div>
     </Wrapper>
   );
@@ -37,7 +57,7 @@ export default AddToCart;
 
 const Wrapper = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   .colors {
     display: flex;
     align-items: center;
