@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import FormatPrice from '../Helpers/FormatPrice';
 import { Button } from '../Styles/Button';
 
 
@@ -15,6 +16,7 @@ const ListProduct = ({ data }) => {
             <div className="description">
                 <h3>{data.name}</h3>
                 <p>{data.description}</p>
+                <h4><FormatPrice price ={data.price}/></h4>
                 <NavLink to={`/products/${data.id}`}>
                     <Button >Read More</Button>
                 </NavLink>
@@ -62,6 +64,10 @@ const Wrapper = styled.section`
     }
 }   
 .description{
+    h4{
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
     h3{
         font-size: 2rem;
         font-weight: bold;}
