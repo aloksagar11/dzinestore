@@ -1,41 +1,53 @@
 import React from "react";
-import Product from "../Componants/Product";
-import { useProductContext } from "../ContextAPI/ContextData";
+import styled from "styled-components";
 import { useFilterContext } from "../ContextAPI/FilterContext";
+import FilterSection from "../Componants/FilterSection";
+import ProductsList from "../Componants/ProductsList";
+import Sort from "../Componants/Sort";
+
 
 const Products = () => {
-  document.title ="Products";
-  // const { isLoading, products } = useProductContext();
-  // if (isLoading) {
-  //   return (
-  //     <>
-  //       <div className="container text-center">
-  //         <h3>.......loading</h3>
-  //       </div>
-  //     </>
-  //   );
-  // }
+  document.title = "Products";
+  
 
-  const {filter_products} = useFilterContext();
+  const { filter_products,setGridView } = useFilterContext();
   return (
+    <Wrapper>
 
-    <div className="container py-4">
-      <p className="text-center h1">All Products</p>
-      <div className="grid grid-three-column">
-        {filter_products.map((ele) => {
-          return (
-            <Product
-              image={ele.image}
-              id={ele.id}
-              name={ele.name}
-              price={ele.price}
-              company={ele.company}
-            />
-          );
-        })}
+      <div className="container-sm grid py-4 grid-layout">
+        <div className="filtersection">
+          <FilterSection />
+
+        </div>
+
+        <div className="">
+          <div className="sort">
+            <Sort/>          
+          </div>          
+          <ProductsList/>
+        </div>
       </div>
-    </div>
+    </Wrapper>
+
   );
 };
 
 export default Products;
+
+const Wrapper = styled.section`
+  
+  .grid-layout{
+    grid-template-columns: 0.3fr 1fr;
+  }
+
+  .grid-three-column{
+    gap: 2rem;
+  }
+  .icon{
+    font-size: 2rem;
+    cursor: pointer;
+    border: 1px solid #ad0303;
+    color: #ad0303;
+    
+  }
+`
