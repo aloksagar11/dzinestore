@@ -12,13 +12,15 @@ const Sort = () => {
       <div className="sorting-list--grid">
         <button
           className={grid_view ? "active sort-btn" : "sort-btn"}
-          onClick={()=>setGridView(true)}>
+          onClick={() => setGridView(true)}
+        >
           <BsFillGridFill className="icon" />
         </button>
 
         <button
           className={!grid_view ? "active sort-btn" : " sort-btn"}
-          onClick={()=>setGridView(false)}>
+          onClick={() => setGridView(false)}
+        >
           <BsList className="icon" />
         </button>
       </div>
@@ -35,13 +37,11 @@ const Sort = () => {
             name="sort"
             id="sort"
             className="sort-selection--style"
-            onClick={sorting}>
-            <option value="lowest">Price(lowest)</option>
-            <option value="#" disabled></option>
+            onClick={sorting}
+          >
             <option value="highest">Price(highest)</option>
-            <option value="#" disabled></option>
+            <option value="lowest">Price(lowest)</option>
             <option value="a-z">Price(a-z)</option>
-            <option value="#" disabled></option>
             <option value="z-a">Price(z-a)</option>
           </select>
         </form>
@@ -70,18 +70,23 @@ const Wrapper = styled.section`
     }
     .active {
       background-color: #ad0303;
-      .icon{
-         color: #fff;
-         border-color: #fff;
+      .icon {
+        color: #fff;
+        border-color: #fff;
       }
-     
+    }
+  }
+  .sort-selection--style {
+    &:focus > option:hover {
+      background-color: #ad0303 !important;
+      color: white;
     }
   }
   .sort-selection .sort-selection--style {
     padding: 0.5rem;
     font-size: 1.4rem;
     cursor: pointer;
-    .sort-select--option {
+    .sort-select--style {
       padding: 0.5rem 0;
       cursor: pointer;
       height: 2rem;

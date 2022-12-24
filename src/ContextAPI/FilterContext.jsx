@@ -10,12 +10,15 @@ const initialState = {
   filter_products: [],
   all_products: [],
   grid_view: true,
-  sorting_value: "lowest",
+  sorting_value: "highest",
   filters: {
     text: "",
     category:"All",
     company :"All",
-    color:"All"
+    color:"All",
+    price:0,
+    maxPrice:0,
+    minPrice :0,
   },
 };
 
@@ -56,9 +59,14 @@ export const FilterContext = ({ children }) => {
     dispatch({ type: "GET_SORT_VALUE", payload: sortValue });
   };
 
+  // clear filter
+  const clearFilter=()=>{
+    dispatch({type :"CLEAR_FILTERS"});
+  }
+
   return (
     <filterContext.Provider
-      value={{ ...state, setGridView, sorting, updateFilterValue }}
+      value={{ ...state, setGridView, sorting, updateFilterValue,clearFilter }}
     >
       {children}
     </filterContext.Provider>

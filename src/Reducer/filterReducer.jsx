@@ -1,10 +1,22 @@
 const filterReducer = (state, action) => {
   switch (action.type) {
     case "SET_FILTER_DATA":
+      let priceArr = [];
+      action.payload.map((ele) => {
+        return priceArr.push(ele.price);
+      });
+      const MaxPrice = Math.max(...priceArr);
+      const MinPrice = Math.min(...priceArr);
       return {
         ...state,
         filter_products: [...action.payload],
         all_products: [...action.payload],
+        filters: {
+          ...state.filters,
+          maxPrice: MaxPrice,
+          price: MaxPrice,
+          minPrice: MinPrice,
+        },
       };
 
     case "SET_GRIDVIEW":
@@ -57,43 +69,62 @@ const filterReducer = (state, action) => {
     case "UPDATE_FILTER_DATA":
       const { all_products } = state;
       let tempFilterData = [...all_products];
-      const {text,category,company} = state.filters;
+      const { text, category, company, color, price } = state.filters;
 
-      if(text){
-         tempFilterData = tempFilterData.filter((ele)=>{
-            return ele.name.toLowerCase().includes(text);
-         });
-      }
-      
-      if(category){
-        if(category==="All"){
-            tempFilterData =tempFilterData
-        }
-        else{
-
-            tempFilterData = tempFilterData.filter((ele)=>{
-                return ele.category===category
-            });
-        }
-      }
-      if(company){
-        if(company==="All"){
-            tempFilterData =tempFilterData
-        }
-        else{
-
-            tempFilterData = tempFilterData.filter((ele)=>{
-                return ele.company.toLowerCase() ===company.toLowerCase()
-            });
-        }
+      if (text) {
+        tempFilterData = tempFilterData.filter((ele) => {
+          return ele.name.toLowerCase().includes(text);
+        });
       }
 
+      if (category) {
+        if (category === "All") {
+          tempFilterData = tempFilterData;
+        } else {
+          tempFilterData = tempFilterData.filter((ele) => {
+            return ele.category === category;
+          });
+        }
+      }
+      if (company) {
+        if (company === "All") {
+          tempFilterData = tempFilterData;
+        } else {
+          tempFilterData = tempFilterData.filter((ele) => {
+            return ele.company.toLowerCase() === company.toLowerCase();
+          });
+        }
+      }
+      if (color !== "All") {
+        tempFilterData = tempFilterData.filter((ele) => {
+          return ele.colors.includes(color);
+        });
+      }
+      if (price) {
+        tempFilterData = tempFilterData.filter((ele) => {
+          return ele.price <= price;
+        });
+      }
 
       return {
         ...state,
-        filter_products: tempFilterData ,
+        filter_products: tempFilterData,
       };
 
+    case "CLEAR_FILTERS":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          category: "All",
+          company: "All",
+          color: "All",
+          maxPrice: state.filters.maxPrice,
+          price: state.filters.maxPrice,
+          minPrice: state.filters.maxPrice,
+        },
+      };
     default:
       return state;
   }

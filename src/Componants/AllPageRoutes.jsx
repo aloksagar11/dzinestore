@@ -22,6 +22,7 @@ const AllPageRoutes = ({ Children }) => {
       text: "black",
       bg: "#f3f2f2",
       black: "#000",
+      darkRed :"#8a0909",
       white: "#fff",
       helper: "darkgray",
       border: "#e2e2e2",
