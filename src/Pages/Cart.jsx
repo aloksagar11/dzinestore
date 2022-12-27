@@ -34,7 +34,7 @@ const Wrapper = styled.section`
    
   .grid{
     display: grid;
-    justify-content: center;
+    justify-items: center;
     align-items: center;
     gap: 2rem;
   }
@@ -52,5 +52,27 @@ const Wrapper = styled.section`
       opacity: 1;
       }
     }
+  }
+  @media (max-width: ${({theme})=>theme.media.mobile}) {
+    .grid-five-column{
+      grid-template-columns: repeat(3,1fr);
+      align-content: center;
+    }
+    .hide-item{
+      display: none;
+    }
+    .item-image--name{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items:center;
+    gap: 1rem;
+    padding: 2rem 0;
+    .image{
+      width: 100%;
+      max-width: 10rem;
+    }
+    }
+    
   }
 `

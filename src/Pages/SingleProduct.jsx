@@ -48,7 +48,7 @@ const SingleProduct = () => {
   return (
     <Wrapper>
       <PageNavigation title={name} />
-      <div className="container">
+      <div className="container py-4">
         <div className="grid grid-two-column">
           {/* Product images */}
           <div className="product-images">

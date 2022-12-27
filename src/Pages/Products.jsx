@@ -35,6 +35,8 @@ const Products = () => {
 export default Products;
 
 const Wrapper = styled.section`
+margin-top: 3rem;
+
   
   .grid-layout{
     grid-template-columns: 0.3fr 1fr;
