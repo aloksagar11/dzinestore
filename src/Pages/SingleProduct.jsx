@@ -23,7 +23,7 @@ const SingleProduct = () => {
   const { id } = useParams();
   const { isSingleLoading, singleProduct, getSingleProductData } =
     useProductContext();
-  console.log(singleProduct);
+  // console.log(singleProduct);
   const {
     id: alias,
     name,
@@ -57,10 +57,10 @@ const SingleProduct = () => {
           {/* Product details */}
           <div className="product-details">
             <p className="product-name"> {name}</p>
-            <p>
+            
               <Stars star ={stars} reviews = {reviews}/>
               {/* {stars} Stars ({reviews} reviews) */}
-            </p>
+            
             <p>
               MRP :{" "}
               <span>
@@ -106,7 +106,7 @@ const SingleProduct = () => {
               Brand : <span>{company}</span>
             </p>
             <hr />
-            {stock>0 && <AddToCart products = {singleProduct}/> }
+            {stock>0 && <AddToCart product = {singleProduct}/> }
           </div>
         </div>
       </div>

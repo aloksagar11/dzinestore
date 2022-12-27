@@ -3,7 +3,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaStarHalfAlt } from "react-icons/fa";
 import styled from "styled-components";
 const Stars = ({ star, reviews }) => {
-  console.log(star, reviews);
+  // console.log(star, reviews);
 
   const ratingStar = Array.from({ length: 5 }, (ele, index) => {
     const number = index + 0.5;

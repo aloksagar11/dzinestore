@@ -9,12 +9,12 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
       <div className="grid grid-four-column">
         {imgs.map((curElm, index) => {
           return (
-            <figure>
+            <figure key={index}> 
               <img
                 src={curElm.url}
                 alt={curElm.filename}
                 className="box-image--style"
-                key={index}
+              
                 onClick={() => setImgIndex(index)}
               />
             </figure>
@@ -24,7 +24,7 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
       {/* 2nd column  */}
 
       <div className="main-screen">
-        <img src={imgs[imgIndex].url} alt={imgs[imgIndex].filename} />
+        <img src={imgs[imgIndex].url} alt={imgs[imgIndex].filename}  key={imgIndex}/>
       </div>
     </Wrapper>
   );

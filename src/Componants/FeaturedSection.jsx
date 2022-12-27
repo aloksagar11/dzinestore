@@ -5,7 +5,7 @@ import Product from "./Product";
 
 const FeaturedSection = () => {
   const { isLoading, featuredProducts } = useProductContext();
-  console.log(featuredProducts);
+  // console.log(featuredProducts);
   if (isLoading) {
     return (
       <>
@@ -21,9 +21,10 @@ const FeaturedSection = () => {
         <h3 >Check Now</h3>
         <h2>Featured Products</h2>
         <div className="grid grid-three-column py-4">
-          {featuredProducts.map((ele) => {
+          {featuredProducts.map((ele,index) => {
             return (
               <Product
+                key ={index}
                 image={ele.image}
                 id={ele.id}
                 name={ele.name}

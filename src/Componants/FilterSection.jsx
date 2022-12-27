@@ -9,7 +9,8 @@ const FilterSection = () => {
     filters: { text, category, company, color, price, maxPrice },
     updateFilterValue,
     all_products,
-    clearFilter
+    clearFilter,
+    key: alias
   } = useFilterContext();
 
   // to get Unique Data
@@ -46,10 +47,11 @@ const FilterSection = () => {
       <div className="category-filter">
         <h3>Category</h3>
         <div>
-          {categoryData.map((ele) => {
+          {categoryData.map((ele,index) => {
             return (
               <button
                 type="button"
+                key={index}
                 name="category"
                 onClick={updateFilterValue}
                 className={ele === category ? "active" : ""}
@@ -72,9 +74,9 @@ const FilterSection = () => {
             className="company-filter--select"
             onClick={updateFilterValue}
           >
-            {companyData.map((ele) => {
+            {companyData.map((ele,index) => {
               return (
-                <option value={ele} name="company">
+                <option key={index} value={ele} name="company">
                   {ele}
                 </option>
               );
@@ -89,12 +91,13 @@ const FilterSection = () => {
             if (ele === "All") {
               return (
                 <button
-                  name="color"
+                key={index}
+                name="color"
                   value={ele}
                   className={ele === color ? "allbtn activeAllBtn" : "allbtn"}
                   // style={{ backgroundColor: ele }}
                   onClick={updateFilterValue}
-                >
+                  >
                   All
                 </button>
               );
@@ -102,7 +105,8 @@ const FilterSection = () => {
 
             return (
               <button
-                name="color"
+              name="color"
+              key={index}
                 value={ele}
                 className={ele === color ? "btnStyle active" : "btnStyle"}
                 style={{ backgroundColor: ele }}
@@ -126,7 +130,7 @@ const FilterSection = () => {
           min="100"
           max={maxPrice}
           onChange={updateFilterValue}
-          class="slider"
+          className="slider"
           id="myRange"
         />
       </div>

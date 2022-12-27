@@ -25,7 +25,7 @@ const ContextData = ({ children }) => {
     try {
       const mydata = await axios.get(url);
       const products = await mydata.data;
-      console.log(products);
+      // console.log(products);
       dispatch({ type: "SET_API_DATA", payload: products });
     } catch (error) {
       dispatch({ type: "API_ERROR" });

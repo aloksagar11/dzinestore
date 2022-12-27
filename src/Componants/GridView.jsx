@@ -5,9 +5,10 @@ import Product from "../Componants/Product";
 export default function GridView({filter_products}) {
     return (
             <div className=" grid grid-three-column">
-                {filter_products.map((ele) => {
+                {filter_products.map((ele,index) => {
                     return (
                         <Product
+                        key ={index}
                             image={ele.image}
                             id={ele.id}
                             name={ele.name}

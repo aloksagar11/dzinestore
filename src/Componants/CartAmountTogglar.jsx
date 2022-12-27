@@ -7,14 +7,13 @@ const CartAmountTogglar = ({ amount, setDecrease, setIncrease }) => {
   return (
     <Wrapper>
       <div className="counter py-4">
-        <Button className="mx-3" variant="outlined" onClick={setDecrease}>
-          {" "}
-          <AiOutlineMinus className="icon" />{" "}
-        </Button>
+        <button className="mx-3" onClick={setDecrease}>
+          <AiOutlineMinus className="icon" />
+        </button>
         {amount}
-        <Button className="mx-3" variant="outlined" onClick={setIncrease}>
-        <AiOutlinePlus className="icon"/>
-        </Button>
+        <button className="mx-3" onClick={setIncrease}>
+          <AiOutlinePlus className="icon" />
+        </button>
       </div>
     </Wrapper>
   );
@@ -22,12 +21,12 @@ const CartAmountTogglar = ({ amount, setDecrease, setIncrease }) => {
 
 export default CartAmountTogglar;
 const Wrapper = styled.section`
-
-    font-size:2.4rem;
-    .icon,Button{
-      font-size: 2.4rem;
-      color:#b90000;
-      border-color: #b90000 ;
-    }
-    
-`
+  
+  .counter,.icon,
+  button {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #b90000;
+    border: none;
+  }
+`;
