@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import FormatPrice from "../Helpers/FormatPrice";
 import CartAmountTogglar from "./CartAmountTogglar";
-import {MdDelete} from 'react-icons/md'
+import { MdDelete } from "react-icons/md";
 import { useCartContext } from "../ContextAPI/CartContext";
-const CartItem = ({ id, name, color, amount, price, image }) => {
-
-    const {removeItem} = useCartContext();
+const CartItem = ({ id, name, color, amount, price, max, image }) => {
+  
+  const { removeItem } = useCartContext();
+  const [cartCount,setCartCount]= useState(amount);
   const setdecrease = () => {
-    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+    cartCount > 1 ? setCartCount(cartCount-1) : setCartCount(1);
   };
   const setincrease = () => {
-    stock > amount ? setAmount(amount + 1) : setAmount(stock);
+    max > cartCount ? setCartCount(cartCount+1) : setCartCount(max);
   };
   return (
     <Wrapper className="grid grid-five-column">
@@ -39,19 +40,24 @@ const CartItem = ({ id, name, color, amount, price, image }) => {
       </div>
       <div>
         <CartAmountTogglar
-          amount={amount}
+          amount={cartCount}
           setDecrease={setdecrease}
           setIncrease={setincrease}
         />
       </div>
       <div className="hide-item">
         <p>
-          <FormatPrice price={price * amount} />
+          <FormatPrice price={price * cartCount} />
         </p>
       </div>
       <div>
-        <button className="delete" onClick={()=>{removeItem(id)}}>
-        <MdDelete className = "icon"/>
+        <button
+          className="delete"
+          onClick={() => {
+            removeItem(id);
+          }}
+        >
+          <MdDelete className="icon" />
         </button>
       </div>
     </Wrapper>
@@ -85,8 +91,7 @@ const Wrapper = styled.div`
       }
     }
   }
-  .delete
-  {
+  .delete {
     border: none;
     background: none;
     color: #a70303;
