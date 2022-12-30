@@ -4,12 +4,13 @@ import CartItem from "../Componants/CartItem";
 import { useCartContext } from "../ContextAPI/CartContext";
 import { NavLink } from "react-router-dom";
 import { Button } from "../Styles/Button";
+import FormatPrice from "../Helpers/FormatPrice";
 
 const Cart = () => {
-  const { cart, clearCart } = useCartContext();
+  const { cart, clearCart, total_amount, shipping_fee } = useCartContext();
   // console.log(cart);
   document.title = "Cart";
-  if (cart.length==0) {
+  if (cart.length == 0) {
     return (
       <Empty className="empty-cart">
         <h2>Opps!!!!</h2>
@@ -48,6 +49,38 @@ const Cart = () => {
 
             <Button onClick={clearCart}>Clear Cart</Button>
           </div>
+          <div className="subtotal-box my-3">
+            <div className="subtotal-item">
+              <div className="subtotal">
+                <p>
+                  <b>Subtoal : </b>
+                </p>
+                <p>
+                  <FormatPrice price={total_amount} />
+                </p>
+              </div>
+              <div className="subtotal">
+                <p>
+                  <b>Shipping Fee : </b>
+                </p>
+                <p>
+                  <FormatPrice price={shipping_fee} />
+                </p>
+              </div>
+              <hr />
+              <div className="subtotal">
+                <p>
+                  <b>Total Payable : </b>
+                </p>
+                <p>
+                  <FormatPrice price={shipping_fee + total_amount} />
+                </p>
+              </div>
+              <NavLink to='/checkout'>
+                <Button>Checkout now</Button>
+              </NavLink>
+            </div>
+          </div>
         </div>
       </Wrapper>
     );
@@ -56,6 +89,7 @@ const Cart = () => {
 export default Cart;
 const Wrapper = styled.section`
   padding: 9rem 0;
+  margin-bottom: 5rem;
   .container {
     max-width: 100rem;
     hr {
@@ -75,6 +109,23 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: space-between;
     padding: 0 5rem;
+  }
+  .subtotal-box {
+    width: 100%;
+    display: flex;
+      justify-content: flex-end;
+    .subtotal-item {
+      width: 25rem;
+      height: 20rem;
+      
+      padding: 2rem;
+      background-color: #a30c0c13;
+      .subtotal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
   }
   .cart-item {
     .item-image--name {

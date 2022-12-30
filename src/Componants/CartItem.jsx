@@ -4,16 +4,11 @@ import FormatPrice from "../Helpers/FormatPrice";
 import CartAmountTogglar from "./CartAmountTogglar";
 import { MdDelete } from "react-icons/md";
 import { useCartContext } from "../ContextAPI/CartContext";
+
 const CartItem = ({ id, name, color, amount, price, max, image }) => {
-  
-  const { removeItem } = useCartContext();
-  const [cartCount,setCartCount]= useState(amount);
-  const setdecrease = () => {
-    cartCount > 1 ? setCartCount(cartCount-1) : setCartCount(1);
-  };
-  const setincrease = () => {
-    max > cartCount ? setCartCount(cartCount+1) : setCartCount(max);
-  };
+
+  const { removeItem,setdecrease ,setincrease } = useCartContext();
+ 
   return (
     <Wrapper className="grid grid-five-column">
       <div className="item-image--name">
@@ -40,14 +35,14 @@ const CartItem = ({ id, name, color, amount, price, max, image }) => {
       </div>
       <div>
         <CartAmountTogglar
-          amount={cartCount}
-          setDecrease={setdecrease}
-          setIncrease={setincrease}
+          amount={amount}
+          setDecrease={()=>setdecrease(id)}
+          setIncrease={()=>setincrease(id)}
         />
       </div>
       <div className="hide-item">
         <p>
-          <FormatPrice price={price * cartCount} />
+          <FormatPrice price={price * amount} />
         </p>
       </div>
       <div>
