@@ -1,6 +1,6 @@
 # DZinestore - ReactJS E-commerce App
 
-![DZinestore Logo](./public/images/logo.png)
+![DZinestore Logo](./public/logo.png)
 
 Welcome to DZinestore, a modern and user-friendly e-commerce app built using ReactJS and API. This app is designed to provide a seamless shopping experience for customers, allowing them to explore a wide range of products and make secure purchases online.
 ### live preview : https://dzinestore.netlify.app
