@@ -30,7 +30,7 @@ DZinestore comes packed with a variety of features to enhance the shopping exper
 
 To set up DZinestore on your local machine, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/yourusername/dzinestore.git`
+1. Clone the repository: `git clone https://github.com/aloksagar11/dzinestore.git`
 2. Navigate to the project directory: `cd dzinestore`
 3. Install the dependencies: `npm install`
 
@@ -39,10 +39,10 @@ To set up DZinestore on your local machine, follow these steps:
 To run the app locally, execute the following command:
 
 ```bash
-npm start
+npm run dev
 ```
 
-This will start the development server, and you can access the app by visiting `http://localhost:3000` in your web browser.
+This will start the development server, and you can access the app by visiting `http://localhost:5173` in your web browser.
 
 ## Technologies Used
 
@@ -57,7 +57,7 @@ DZinestore leverages the following technologies:
 
 ## Contributing
 
-We welcome contributions to improve DZinestore and make it even better! To contribute, follow these steps:
+We welcome contributions to improve Dzinestore and make it even better! To contribute, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch: `git checkout -b my-new-feature`
@@ -69,10 +69,10 @@ We appreciate your feedback and bug reports as well!
 
 ## License
 
-DZinestore is open-source software released under the [MIT License](./LICENSE).
+Dzinestore is open-source software released under the [MIT License](./LICENSE).
 
 ---
 
-We hope you enjoy using DZinestore! If you have any questions or need assistance, feel free to contact our team at support@dzinestore.com.
+We hope you enjoy using Dzinestore! If you have any questions or need assistance, feel free to contact our team at aloksagar125@gmail.com.
 
 Happy shopping!
