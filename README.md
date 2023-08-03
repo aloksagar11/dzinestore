@@ -1,4 +1,4 @@
-# DZinestore - ReactJS E-commerce App
+# Dzinestore - ReactJS E-commerce App
 
 ![DZinestore Logo](./public/logo.png)
 
